@@ -64,6 +64,15 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
+### Backend API configuration
+
+The frontend reads its API base URL from `VITE_API_URL`. For local development, copy
+`.env.example` to `.env` and start the backend on port 5000; Vite proxies `/api`
+requests to that server when `VITE_API_URL` is unset. For a deployed frontend, set
+`VITE_API_URL` in the hosting provider to the public backend URL ending in `/api`,
+then rebuild and redeploy the frontend. The backend must be running and reachable
+at that URL.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!

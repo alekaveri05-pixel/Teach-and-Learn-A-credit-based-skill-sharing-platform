@@ -1,4 +1,4 @@
-const API_URL = 'https://teach-trade-production.up.railway.app/api';
+const API_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '');
 
 function getToken(): string | null {
   return localStorage.getItem('teachtrade_token');
