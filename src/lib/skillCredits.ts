@@ -88,7 +88,7 @@ const SKILL_CREDIT_MAP: Record<string, number> = {
   'Music Theory': 1,
 };
 
-const DEFAULT_CREDITS = 1;
+const DEFAULT_CREDITS = 5;
 
 export function getSkillCredits(skillName: string): number {
   if (!skillName) return DEFAULT_CREDITS;
