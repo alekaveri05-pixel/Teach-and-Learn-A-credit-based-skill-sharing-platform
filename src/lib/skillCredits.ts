@@ -1,7 +1,6 @@
-// Skill credit costs based on professionalism level (must match backend/config/skillCredits.js)
 
 const SKILL_CREDIT_MAP: Record<string, number> = {
-  // ── 3 credits — High level (Technical / Professional) ──────────────────────
+  // 3 Credits - Technical Skills
   'Programming': 3,
   'Web Development': 3,
   'Full Stack Development': 3,
@@ -17,7 +16,6 @@ const SKILL_CREDIT_MAP: Record<string, number> = {
   'DevOps': 3,
   'Database Management': 3,
   'System Design': 3,
-  // Specific languages & frameworks → 3 credits
   'Python': 3,
   'JavaScript': 3,
   'TypeScript': 3,
@@ -44,7 +42,7 @@ const SKILL_CREDIT_MAP: Record<string, number> = {
   'AWS': 3,
   'Azure': 3,
 
-  // ── 2 credits — Medium level (Creative / Business) ─────────────────────────
+  // 2 Credits - Creative / Business Skills
   'Graphic Design': 2,
   'UI/UX Design': 2,
   'Design': 2,
@@ -62,7 +60,7 @@ const SKILL_CREDIT_MAP: Record<string, number> = {
   'Business Strategy': 2,
   'Watercolor Painting': 2,
 
-  // ── 1 credit — Basic level (Lifestyle / Hobby) ─────────────────────────────
+  // 1 Credit - Basic / Hobby Skills
   'Languages': 1,
   'Spanish': 1,
   'French': 1,
@@ -92,14 +90,14 @@ const DEFAULT_CREDITS = 5;
 
 export function getSkillCredits(skillName: string): number {
   if (!skillName) return DEFAULT_CREDITS;
-  const lower = skillName.toLowerCase();
-  for (const [key, value] of Object.entries(SKILL_CREDIT_MAP)) {
-    if (key.toLowerCase() === lower) return value;
-  }
-  for (const [key, value] of Object.entries(SKILL_CREDIT_MAP)) {
-    if (lower.includes(key.toLowerCase()) || key.toLowerCase().includes(lower)) return value;
-  }
-  return DEFAULT_CREDITS;
+
+  const normalized = skillName.trim().toLowerCase();
+
+  const matched = Object.entries(SKILL_CREDIT_MAP).find(
+    ([key]) => key.toLowerCase() === normalized
+  );
+
+  return matched ? matched[1] : DEFAULT_CREDITS;
 }
 
 export { SKILL_CREDIT_MAP, DEFAULT_CREDITS };
